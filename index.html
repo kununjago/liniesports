@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LINI ESPORTS</title>
+    
+    <!-- Ikon Tab Browser (Favicon) -->
+    <link rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Memuat Tailwind CSS untuk styling responsif yang cepat -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font khusus untuk tampilan premium: Inter untuk teks biasa, Teko untuk judul berkesan agresif/esports -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Ikon FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ikon Bendera untuk identitas negara roster -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lini-blue': '#0b328a', // Biru tua representasi kekuatan
+                        'lini-light-blue': '#5fcce9', // Biru muda representasi kecepatan/petir
+                        'lini-dark': '#0f172a', // Warna gelap premium untuk teks/background
+                        'lini-gray': '#f1f5f9'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'display': ['Teko', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Pola latar belakang yang elegan */
+        .hero-pattern {
+            background-image: radial-gradient(#0b328a 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: 0 0;
+            opacity: 0.04;
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(135deg, #0b328a 0%, #5fcce9 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(11, 50, 138, 0.08);
+        }
+        /* Kustomisasi scrollbar untuk tampilan lebih bersih */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="font-sans relative overflow-x-hidden">
+    <div class="hero-pattern"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo & Brand -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <!-- File logo.png tinggal Anda masukkan di folder yang sama -->
+                    <img src="logo.png" alt="LINI ESPORTS Logo" class="h-12 w-12 object-contain drop-shadow-md rounded-full bg-white p-0.5 border border-gray-100" onerror="this.src='https://placehold.co/100x100/0b328a/ffffff?text=LINI'">
+                    <span class="font-display font-bold text-3xl text-lini-blue tracking-wide mt-1">LINI<span class="text-lini-light-blue">ESPORTS</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-sm uppercase tracking-wider text-gray-700 hover:text-lini-blue font-semibold transition-colors">Beranda</a>
+                    <button onclick="openModal('about-modal')" class="text-sm uppercase tracking-wider text-gray-700 hover:text-lini-blue font-semibold transition-colors bg-transparent border-none p-0 m-0 cursor-pointer">Tentang Kami</button>
+                    <a href="#divisions" class="text-sm uppercase tracking-wider text-gray-700 hover:text-lini-blue font-semibold transition-colors">Divisi</a>
+                    <a href="#contact" class="text-sm uppercase tracking-wider text-gray-700 hover:text-lini-blue font-semibold transition-colors">Kontak</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-lini-blue focus:outline-none p-2 rounded-md transition-colors bg-gray-50">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-3 pb-4 space-y-2">
+                <a href="#home" class="block px-4 py-3 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-lini-blue hover:bg-blue-50/50 rounded-lg transition-colors">Beranda</a>
+                <button onclick="openModal('about-modal'); document.getElementById('mobile-menu').classList.add('hidden');" class="block w-full text-left px-4 py-3 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-lini-blue hover:bg-blue-50/50 rounded-lg transition-colors">Tentang Kami</button>
+                <a href="#divisions" class="block px-4 py-3 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-lini-blue hover:bg-blue-50/50 rounded-lg transition-colors">Divisi</a>
+                <a href="#contact" class="block px-4 py-3 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-lini-blue hover:bg-blue-50/50 rounded-lg transition-colors">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden min-h-[90vh] flex flex-col justify-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center mb-6 px-5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-lini-blue font-semibold text-xs uppercase tracking-widest shadow-sm">
+                    <i class="fas fa-bolt text-lini-light-blue mr-2"></i> Puncak Keunggulan Esports
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-8xl font-display font-bold mb-6 leading-[1.1] uppercase tracking-tight">
+                    Dominasi <br class="hidden sm:block">
+                    <span class="text-gradient">Tanpa Batas</span>
+                </h1>
+                <p class="text-base md:text-lg lg:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    LINI ESPORTS merupakan representasi ambisi dan dedikasi talenta Indonesia. Kami hadir untuk mendefinisikan ulang standar kejayaan kompetitif di panggung internasional.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 px-4">
+                    <a href="#divisions" class="w-full sm:w-auto px-8 py-4 bg-lini-blue text-white rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-blue-900 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-200 text-center flex items-center justify-center gap-2">
+                        Jelajahi Divisi <i class="fas fa-chevron-right text-xs"></i>
+                    </a>
+                    <button onclick="openModal('about-modal')" class="w-full sm:w-auto px-8 py-4 bg-white border-2 border-gray-200 text-gray-800 rounded-xl font-bold text-sm uppercase tracking-wider hover:border-lini-blue hover:text-lini-blue transition-all shadow-sm text-center flex items-center justify-center gap-2">
+                        Profil Tim
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Hero Image/Logo Presentation -->
+            <div class="mt-20 relative w-full max-w-md mx-auto">
+                <div class="absolute inset-0 bg-lini-light-blue blur-[80px] opacity-20 rounded-full animate-pulse"></div>
+                <!-- Menggunakan logo.png -->
+                <img src="logo.png" alt="LINI ESPORTS Giant Logo" class="relative z-10 w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700 rounded-3xl bg-white p-6 md:p-8" onerror="this.src='https://placehold.co/400x400/0b328a/ffffff?text=LINI+ESPORTS'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Divisi Section -->
+    <section id="divisions" class="py-24 bg-gray-50/50 border-t border-gray-100 relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lini-blue/20 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold text-lini-light-blue uppercase tracking-widest mb-2 block">Kekuatan Utama</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-lini-dark uppercase mb-4">Divisi <span class="text-lini-blue">Esports</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">Menerjunkan pasukan elite dengan mekanik tingkat tinggi dan kedisiplinan taktik untuk menaklukkan setiap turnamen bergengsi.</p>
+            </div>
+
+            <!-- Menampilkan satu divisi tersentralisasi -->
+            <div class="flex justify-center" id="divisions-container">
+                <!-- Divisi Utama: Mobile Legends -->
+                <div class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 max-w-lg w-full border border-gray-200">
+                    <div class="h-64 bg-gray-900 relative overflow-hidden">
+                        <!-- Gambar Background MLBB -->
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI6dXp5O7uLOfjpa3v1LuVh3RAUIEVIg-N2i66aBIe_XDC2PFnGJAmD6s&s=10" alt="Mobile Legends Arena" class="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 opacity-80 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b328a] via-[#0b328a]/40 to-transparent mix-blend-multiply"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="px-3 py-1 bg-lini-light-blue text-lini-dark text-[10px] font-bold uppercase tracking-widest rounded-sm mb-3 inline-block">Divisi Utama</span>
+                            <h3 class="text-4xl font-display font-bold text-white tracking-wide uppercase leading-none shadow-black drop-shadow-lg">MOBILE LEGENDS</h3>
+                            <p class="text-gray-300 text-sm mt-1 font-display tracking-widest">BANG BANG</p>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-white">
+                        <p class="text-gray-600 mb-6 text-sm leading-relaxed">
+                            Pasukan andalan kami yang siap mendominasi <i>Land of Dawn</i>. Berfokus pada sinergi tim, rotasi makro yang presisi, dan penguasaan mikro mekanik di atas rata-rata.
+                        </p>
+                        <button onclick="openModal('roster-mlbb-modal')" class="w-full py-4 bg-gray-50 hover:bg-lini-blue text-lini-blue hover:text-white rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-300 border border-gray-200 hover:border-lini-blue flex items-center justify-center gap-3">
+                            <i class="fas fa-users"></i> Lihat Formasi Roster
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section class="py-16 bg-white border-y border-gray-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mb-10">Mitra Strategis Tersertifikasi</p>
+            <div class="flex justify-center items-center">
+                <!-- Sponsor Tunggal: SJPLAYTASION -->
+                <div class="group flex flex-col items-center gap-3 grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer">
+                    <!-- File logo sponsor: sjplaytasion-logo.png -->
+                    <!-- Jika gambar tidak ditemukan (belum diupload), script onerror akan memunculkan teks ikon pengganti -->
+                    <img src="sjplaytasion-logo.png" alt="SJPLAYTASION Logo" class="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+                         onerror="this.style.display='none'; document.getElementById('sponsor-fallback').style.display='flex'">
+                    
+                    <!-- Fallback jika sjplaytasion-logo.png belum tersedia di folder -->
+                    <div id="sponsor-fallback" class="items-center gap-3 hidden">
+                        <i class="fab fa-playstation text-5xl text-[#003791]"></i>
+                        <span class="font-display font-bold text-4xl tracking-[0.2em] text-gray-800">SJPLAYTASION</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-50 pt-20 pb-10 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-6 cursor-pointer" onclick="window.scrollTo(0,0)">
+                        <img src="logo.png" alt="Logo LINI" class="h-12 w-12 object-contain rounded-full bg-white p-0.5 shadow-sm border border-gray-100" onerror="this.src='https://placehold.co/100x100/0b328a/ffffff?text=LINI'">
+                        <span class="font-display font-bold text-3xl text-lini-blue tracking-wide mt-1">LINI<span class="text-lini-light-blue">ESPORTS</span></span>
+                    </div>
+                    <p class="text-gray-500 mb-8 max-w-sm text-sm leading-relaxed">
+                        Membangun ekosistem esports yang kompetitif, profesional, dan berkelanjutan. Bersama talenta terbaik bangsa, kami membawa kehormatan Indonesia ke kancah global.
+                    </p>
+                    <div class="flex space-x-3">
+                        <a href="https://www.instagram.com/linie_esports/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-lini-blue hover:text-white hover:border-lini-blue transition-all shadow-sm" aria-label="Instagram">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@linie.esports" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-lini-blue hover:text-white hover:border-lini-blue transition-all shadow-sm" aria-label="TikTok">
+                            <i class="fab fa-tiktok text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="md:col-span-3">
+                    <h4 class="font-bold text-gray-900 mb-6 uppercase text-xs tracking-widest">Akses Cepat</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home" class="text-gray-500 hover:text-lini-blue text-sm transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Halaman Utama</a></li>
+                        <li><button onclick="openModal('about-modal')" class="text-gray-500 hover:text-lini-blue text-sm transition-colors bg-transparent border-none p-0 text-left flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Profil Perusahaan</button></li>
+                        <li><a href="#divisions" class="text-gray-500 hover:text-lini-blue text-sm transition-colors flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Divisi Utama</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="md:col-span-4">
+                    <h4 class="font-bold text-gray-900 mb-6 uppercase text-xs tracking-widest">Kontak Bisnis</h4>
+                    <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-envelope text-lini-blue text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold text-gray-800 uppercase mb-0.5">Pertanyaan Umum / Sponsor</p>
+                                    <a href="mailto:kenanrahes75@gmail.com" class="text-gray-500 hover:text-lini-blue text-sm transition-colors">kenanrahes75@gmail.com</a>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 pt-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-map-marker-alt text-lini-blue text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold text-gray-800 uppercase mb-0.5">Markas Besar (HQ)</p>
+                                    <span class="text-gray-500 text-sm leading-relaxed">Bandung, Indonesia</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Credits Request User -->
+            <div class="border-t border-gray-200 pt-8 flex flex-col lg:flex-row justify-between items-center gap-6">
+                <p class="text-gray-500 text-xs text-center lg:text-left font-medium">
+                    &copy; <span id="current-year"></span> LINI ESPORTS OFFICIAL. Hak Cipta Dilindungi Undang-Undang.
+                </p>
+                <!-- Modifikasi Bagian Penemu/Pendiri -->
+                <div class="flex items-center gap-4 bg-white px-5 py-3 rounded-xl border border-gray-100 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-lini-blue to-lini-light-blue flex items-center justify-center text-white text-lg shadow-inner">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-0.5">Pendiri & CEO</p>
+                        <p class="text-sm text-gray-900 font-bold">Kenan Rahes Purnomo</p>
+                        <p class="text-[10px] text-gray-400 mt-0.5"><i class="fas fa-calendar-check mr-1"></i> Didirikan: 22 Juni 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <!-- Modal Overlay General -->
+    <div id="modal-overlay" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300 opacity-0" onclick="closeAllModals(event)">
+        
+        <!-- Modal: Tentang Kami (Profil Perusahaan) -->
+        <div id="about-modal" class="modal-content bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto hidden transform scale-95 transition-all duration-300 relative">
+            <button onclick="closeModal('about-modal')" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-colors z-10 focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="p-6 sm:p-10 md:p-12">
+                <div class="grid md:grid-cols-12 gap-10 items-center">
+                    <div class="md:col-span-7 order-2 md:order-1">
+                        <div class="inline-flex items-center mb-4 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-lini-blue font-bold text-[10px] uppercase tracking-widest">
+                            <i class="fas fa-shield-alt text-lini-light-blue mr-2"></i> Executive Summary
+                        </div>
+                        <h2 class="text-4xl font-display font-bold text-gray-900 mb-6 uppercase leading-none">Profil <span class="text-lini-blue">Lini Esports</span></h2>
+                        <div class="w-16 h-1 bg-lini-light-blue mb-6"></div>
+                        
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed text-justify">
+                            Berawal dari semangat kompetitif dan jiwa petarung di <strong>Bandung</strong>, LINI ESPORTS resmi menggebrak panggung pada <strong>22 Juni 2026</strong> di bawah komando sang pendiri, <strong>Kenan Rahes Purnomo</strong>. Kami bukan sekadar tim biasa, melainkan sekumpulan talenta beringas yang disatukan oleh satu ambisi mematikan: Menjadi raja sejati di <i>Land of Dawn</i>.
+                        </p>
+                        <p class="text-gray-600 mb-8 text-sm sm:text-base leading-relaxed text-justify">
+                            Identitas macan biru dan kilatan petir kami bukanlah tanpa makna. Ini adalah wujud dari insting predator yang tajam, rotasi pergerakan secepat kilat, dan mentalitas pantang mundur meski terpojok. Setiap darah yang mengalir di balik jersey LINI membawa sumpah untuk bertarung dengan kehormatan dan meninggalkan warisan legendaris di skena esports Indonesia!
+                        </p>
+                        
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 text-[#003791]">
+                                <i class="fab fa-playstation text-2xl"></i>
+                            </div>
+                            <div class="text-center sm:text-left">
+                                <p class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">Sponsor Resmi</p>
+                                <p class="font-display text-2xl font-bold text-gray-900 tracking-wide">SJPLAYTASION</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-5 order-1 md:order-2 relative">
+                        <div class="aspect-[4/5] bg-gradient-to-b from-gray-50 to-gray-200 rounded-3xl shadow-inner overflow-hidden relative flex items-center justify-center p-8 border border-gray-100">
+                           <div class="absolute inset-0 bg-lini-blue opacity-5 blur-xl"></div>
+                           <!-- Menggunakan logo.png -->
+                           <img src="logo.png" alt="LINI ESPORTS Logo" class="relative z-10 w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/0b328a/ffffff?text=LINI+ESPORTS'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: Roster MLBB -->
+        <div id="roster-mlbb-modal" class="modal-content bg-lini-dark rounded-3xl shadow-2xl w-full max-w-6xl max-h-[95vh] overflow-y-auto hidden transform scale-95 transition-all duration-300 relative border border-gray-800">
+            <!-- Modal Background Decoration -->
+            <div class="absolute top-0 right-0 w-full h-64 bg-gradient-to-b from-lini-blue/20 to-transparent pointer-events-none"></div>
+
+            <button onclick="closeModal('roster-mlbb-modal')" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-20 focus:outline-none backdrop-blur-md">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="p-6 sm:p-10 lg:p-12 relative z-10">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center gap-3 mb-4 px-4 py-1.5 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm">
+                        <span class="fi fi-id rounded-[2px] text-lg shadow-sm"></span>
+                        <span class="text-lini-light-blue font-bold tracking-widest text-[10px] uppercase">Talenta Indonesia</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white uppercase mb-4 tracking-wide drop-shadow-lg">Roster <span class="text-transparent bg-clip-text bg-gradient-to-r from-lini-light-blue to-blue-500">Utama</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Susunan 6 pasukan elit Divisi Mobile Legends: Bang Bang. Petarung terbaik yang siap mengeksekusi lawan tanpa ampun.</p>
+                </div>
+
+                <!-- Grid Roster 6 Orang -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                    
+                    <!-- Player 1 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <!-- File gambar pemainml1.png -->
+                            <img src="pemainml1.png" alt="Ronaldo junior" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
+                                <span class="fi fi-id block rounded-[1px] text-base"></span>
+                            </div>
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Ronaldo junior">LNI. Ronaldo junior</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend</span></span>
+                                    <span class="bg-yellow-900/40 text-yellow-200 px-2.5 py-1.5 rounded border border-yellow-700/50 flex justify-between"><span>Max Rank:</span> <span>Immortal (IMO)</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Player 2 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <!-- File gambar pemainml2.png -->
+                            <img src="pemainml1.png" alt="kfxa" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
+                                <span class="fi fi-id block rounded-[1px] text-base"></span>
+                            </div>
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. kfxa">LNI. kfxa</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Epic</span></span>
+                                    <span class="bg-yellow-900/40 text-yellow-200 px-2.5 py-1.5 rounded border border-yellow-700/50 flex justify-between"><span>Max Rank:</span> <span>Mythical Honor</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Player 3 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <!-- File gambar pemainml3.png -->
+                            <img src="pemainml1.png" alt="Nizthdar" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
+                                <span class="fi fi-id block rounded-[1px] text-base"></span>
+                            </div>
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Nizthdar">LNI. Nizthdar</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend</span></span>
+                                    <span class="bg-yellow-900/40 text-yellow-200 px-2.5 py-1.5 rounded border border-yellow-700/50 flex justify-between"><span>Max Rank:</span> <span>Mythical Immortal</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Player 4 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <!-- File gambar pemainml4.png -->
+                            <img src="pemainml1.png" alt="Jack o' Why" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
+                                <span class="fi fi-id block rounded-[1px] text-base"></span>
+                            </div>
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Jack o' Why">LNI. Jack o' Why</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Epic</span></span>
+                                    <span class="bg-yellow-900/40 text-yellow-200 px-2.5 py-1.5 rounded border border-yellow-700/50 flex justify-between"><span>Max Rank:</span> <span>Mythical Glory</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Player 5 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <!-- File gambar pemainml5.png -->
+                            <img src="pemainml1.png" alt="Fnnnxy" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
+                                <span class="fi fi-id block rounded-[1px] text-base"></span>
+                            </div>
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Fnnnxy">LNI. Fnnnxy</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate" title="Perumahan Green city Blok C No.22"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Green City Blok C No.22</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend 5</span></span>
+                                    <span class="bg-yellow-900/40 text-yellow-200 px-2.5 py-1.5 rounded border border-yellow-700/50 flex justify-between"><span>Max Rank:</span> <span>Legend 2</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Player 6 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <!-- File gambar pemainml6.png -->
+                            <img src="pemainml1.png" alt="kariri ikut icm" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
+                                <span class="fi fi-id block rounded-[1px] text-base"></span>
+                            </div>
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. kariri ikut icm">LNI. kariri ikut icm</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Cimahi</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend 2</span></span>
+                                    <span class="bg-yellow-900/40 text-yellow-200 px-2.5 py-1.5 rounded border border-yellow-700/50 flex justify-between"><span>Max Rank:</span> <span>IMO 103</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set tahun otomatis untuk copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+                nav.classList.add('py-0');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('shadow-sm');
+            }
+        });
+
+        // --- Logika Modal / Pop-up ---
+        const modalOverlay = document.getElementById('modal-overlay');
+        
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+
+            // Tampilkan overlay
+            modalOverlay.classList.remove('hidden');
+            // Sedikit delay agar transisi display block berfungsi untuk opacity
+            setTimeout(() => {
+                modalOverlay.classList.remove('opacity-0');
+                modalOverlay.classList.add('opacity-100');
+            }, 10);
+
+            // Sembunyikan semua modal content dulu
+            document.querySelectorAll('.modal-content').forEach(m => m.classList.add('hidden'));
+            
+            // Tampilkan modal yang dituju
+            modal.classList.remove('hidden');
+            
+            // Animasi masuk
+            setTimeout(() => {
+                modal.classList.remove('scale-95');
+                modal.classList.add('scale-100');
+            }, 10);
+
+            // Kunci scroll pada body untuk menghindari double scrollbar
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+
+            // Animasi keluar modal content
+            modal.classList.remove('scale-100');
+            modal.classList.add('scale-95');
+
+            // Animasi keluar overlay
+            modalOverlay.classList.remove('opacity-100');
+            modalOverlay.classList.add('opacity-0');
+
+            // Tunggu animasi selesai baru di-hidden
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalOverlay.classList.add('hidden');
+                // Kembalikan scroll pada body
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Tutup modal jika klik di luar kotak modal (pada area overlay gelap)
+        function closeAllModals(event) {
+            if (event.target === modalOverlay) {
+                const activeModal = document.querySelector('.modal-content:not(.hidden)');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
