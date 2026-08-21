@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- PENGATURAN SEO (SEARCH ENGINE OPTIMIZATION) -->
     <title>LINI ESPORTS</title>
+    <meta name="description" content="LINI ESPORTS adalah tim esports profesional asal Bandung, Indonesia. Berfokus pada divisi Mobile Legends (MLBB) dengan talenta terbaik. Didirikan oleh Kenan Rahes Purnomo.">
+    <meta name="keywords" content="LINI ESPORTS, Lini esport, lini esport bandung, tim esport indonesia, esport mobile legends, roster lini esport, SJPLAYTASION">
+    <meta name="author" content="Kenan Rahes Purnomo">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Indonesian">
+    
+    <!-- Open Graph untuk Tampilan Saat Link Dibagikan -->
+    <meta property="og:title" content="LINI ESPORTS">
+    <meta property="og:description" content="Tim esports elit asal Bandung yang siap mendominasi Land of Dawn. Cek roster resmi LINI ESPORTS!">
+    <meta property="og:image" content="https://liniesports.vercel.app/logo.png">
+    <meta property="og:url" content="https://liniesports.vercel.app/">
+    <meta property="og:type" content="website">
     
     <!-- Ikon Tab Browser (Favicon) -->
     <link rel="icon" href="logo.png" type="image/png">
@@ -11,7 +25,7 @@
     <!-- Memuat Tailwind CSS untuk styling responsif yang cepat -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font khusus untuk tampilan premium: Inter untuk teks biasa, Teko untuk judul berkesan agresif/esports -->
+    <!-- Font khusus untuk tampilan premium: Inter dan Teko -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Teko:wght@500;700&display=swap" rel="stylesheet">
     
     <!-- Ikon FontAwesome -->
@@ -25,9 +39,9 @@
             theme: {
                 extend: {
                     colors: {
-                        'lini-blue': '#0b328a', // Biru tua representasi kekuatan
-                        'lini-light-blue': '#5fcce9', // Biru muda representasi kecepatan/petir
-                        'lini-dark': '#0f172a', // Warna gelap premium untuk teks/background
+                        'lini-blue': '#0b328a', 
+                        'lini-light-blue': '#5fcce9', 
+                        'lini-dark': '#0f172a', 
                         'lini-gray': '#f1f5f9'
                     },
                     fontFamily: {
@@ -45,7 +59,6 @@
             color: #0f172a;
             -webkit-font-smoothing: antialiased;
         }
-        /* Pola latar belakang yang elegan */
         .hero-pattern {
             background-image: radial-gradient(#0b328a 1px, transparent 1px);
             background-size: 24px 24px;
@@ -66,32 +79,26 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(11, 50, 138, 0.08);
         }
-        /* Kustomisasi scrollbar untuk tampilan lebih bersih */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="font-sans relative overflow-x-hidden">
+    <!-- Loader Screen -->
+    <div id="loader" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center transition-opacity duration-700">
+        <img src="logo.png" alt="Loading" class="w-24 h-24 md:w-32 md:h-32 animate-spin drop-shadow-xl mb-6" onerror="this.src='https://placehold.co/100x100/0b328a/ffffff?text=LINI'">
+        <div class="font-display font-bold text-2xl md:text-3xl text-lini-blue tracking-[0.2em] animate-pulse">MEMUAT...</div>
+    </div>
+
     <div class="hero-pattern"></div>
 
-    <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo & Brand -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <!-- File logo.png tinggal Anda masukkan di folder yang sama -->
                     <img src="logo.png" alt="LINI ESPORTS Logo" class="h-12 w-12 object-contain drop-shadow-md rounded-full bg-white p-0.5 border border-gray-100" onerror="this.src='https://placehold.co/100x100/0b328a/ffffff?text=LINI'">
                     <span class="font-display font-bold text-3xl text-lini-blue tracking-wide mt-1">LINI<span class="text-lini-light-blue">ESPORTS</span></span>
                 </div>
@@ -124,7 +131,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden min-h-[90vh] flex flex-col justify-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full">
             <div class="text-center max-w-4xl mx-auto">
@@ -148,50 +154,68 @@
                 </div>
             </div>
             
-            <!-- Hero Image/Logo Presentation -->
             <div class="mt-20 relative w-full max-w-md mx-auto">
                 <div class="absolute inset-0 bg-lini-light-blue blur-[80px] opacity-20 rounded-full animate-pulse"></div>
-                <!-- Menggunakan logo.png -->
                 <img src="logo.png" alt="LINI ESPORTS Giant Logo" class="relative z-10 w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700 rounded-3xl bg-white p-6 md:p-8" onerror="this.src='https://placehold.co/400x400/0b328a/ffffff?text=LINI+ESPORTS'">
             </div>
         </div>
     </section>
 
-    <!-- Divisi Section -->
     <section id="divisions" class="py-24 bg-gray-50/50 border-t border-gray-100 relative">
         <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lini-blue/20 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-xs font-bold text-lini-light-blue uppercase tracking-widest mb-2 block">Kekuatan Utama</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-lini-dark uppercase mb-4">Divisi <span class="text-lini-blue">Esports</span></h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">Menerjunkan pasukan elite dengan mekanik tingkat tinggi dan kedisiplinan taktik untuk menaklukkan setiap turnamen bergengsi.</p>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-lini-dark uppercase mb-4">Divisi <span class="text-lini-blue">Mobile Legends</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">Menerjunkan dua armada elite dengan spesialisasi mekanik tingkat tinggi untuk menaklukkan setiap skena kompetitif.</p>
             </div>
 
-            <!-- Menampilkan satu divisi tersentralisasi -->
-            <div class="flex justify-center" id="divisions-container">
-                <!-- Divisi Utama: Mobile Legends -->
-                <div class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 max-w-lg w-full border border-gray-200">
-                    <div class="h-64 bg-gray-900 relative overflow-hidden">
-                        <!-- Gambar Background MLBB -->
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI6dXp5O7uLOfjpa3v1LuVh3RAUIEVIg-N2i66aBIe_XDC2PFnGJAmD6s&s=10" alt="Mobile Legends Arena" class="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 opacity-80 transition-all duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b328a] via-[#0b328a]/40 to-transparent mix-blend-multiply"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="divisions-container">
+                
+                <!-- Divisi Utama: Tim RAKA -->
+                <div class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 flex flex-col">
+                    <div class="h-56 bg-gray-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mobile Legends Tim Raka" class="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 opacity-80 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b328a] via-[#0b328a]/60 to-transparent mix-blend-multiply"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
                         
                         <div class="absolute bottom-6 left-6 right-6">
-                            <span class="px-3 py-1 bg-lini-light-blue text-lini-dark text-[10px] font-bold uppercase tracking-widest rounded-sm mb-3 inline-block">Divisi Utama</span>
-                            <h3 class="text-4xl font-display font-bold text-white tracking-wide uppercase leading-none shadow-black drop-shadow-lg">MOBILE LEGENDS</h3>
-                            <p class="text-gray-300 text-sm mt-1 font-display tracking-widest">BANG BANG</p>
+                            <span class="px-3 py-1 bg-lini-light-blue text-lini-dark text-[10px] font-bold uppercase tracking-widest rounded-sm mb-2 inline-block">Divisi MLBB</span>
+                            <h3 class="text-4xl font-display font-bold text-white tracking-wide uppercase leading-none shadow-black drop-shadow-lg">TIM RAKA</h3>
                         </div>
                     </div>
-                    <div class="p-8 bg-white">
+                    <div class="p-8 bg-white flex-grow flex flex-col justify-between">
                         <p class="text-gray-600 mb-6 text-sm leading-relaxed">
-                            Pasukan andalan kami yang siap mendominasi <i>Land of Dawn</i>. Berfokus pada sinergi tim, rotasi makro yang presisi, dan penguasaan mikro mekanik di atas rata-rata.
+                            Pasukan yang mengandalkan agresi taktis dan rotasi super cepat. Tim RAKA dibentuk untuk mendominasi fase *early* hingga *mid-game* dengan tekanan tiada henti.
                         </p>
-                        <button onclick="openModal('roster-mlbb-modal')" class="w-full py-4 bg-gray-50 hover:bg-lini-blue text-lini-blue hover:text-white rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-300 border border-gray-200 hover:border-lini-blue flex items-center justify-center gap-3">
-                            <i class="fas fa-users"></i> Lihat Formasi Roster
+                        <button onclick="openModal('roster-raka-modal')" class="w-full py-4 bg-gray-50 hover:bg-lini-blue text-lini-blue hover:text-white rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-300 border border-gray-200 hover:border-lini-blue flex items-center justify-center gap-3">
+                            <i class="fas fa-users"></i> Lihat Roster RAKA
                         </button>
                     </div>
                 </div>
+
+                <!-- Divisi Utama: Tim SIKA -->
+                <div class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 flex flex-col">
+                    <div class="h-56 bg-gray-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mobile Legends Tim Sika" class="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 opacity-80 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b328a] via-[#0b328a]/60 to-transparent mix-blend-multiply"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="px-3 py-1 bg-lini-light-blue text-lini-dark text-[10px] font-bold uppercase tracking-widest rounded-sm mb-2 inline-block">Divisi MLBB</span>
+                            <h3 class="text-4xl font-display font-bold text-white tracking-wide uppercase leading-none shadow-black drop-shadow-lg">TIM SIKA</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-white flex-grow flex flex-col justify-between">
+                        <p class="text-gray-600 mb-6 text-sm leading-relaxed">
+                            Fondasi pertahanan solid dengan penguasaan makro tingkat dewa. Tim SIKA adalah spesialis membalikkan keadaan dan menguasai panggung pertempuran *late-game*.
+                        </p>
+                        <button onclick="openModal('roster-sika-modal')" class="w-full py-4 bg-gray-50 hover:bg-lini-blue text-lini-blue hover:text-white rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-300 border border-gray-200 hover:border-lini-blue flex items-center justify-center gap-3">
+                            <i class="fas fa-users"></i> Lihat Roster SIKA
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -199,16 +223,11 @@
     <!-- Sponsors Section -->
     <section class="py-16 bg-white border-y border-gray-100 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mb-10">Mitra Strategis Tersertifikasi</p>
+            <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mb-10">Sponsor Resmi</p>
             <div class="flex justify-center items-center">
-                <!-- Sponsor Tunggal: SJPLAYTASION -->
                 <div class="group flex flex-col items-center gap-3 grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer">
-                    <!-- File logo sponsor: sjplaytasion-logo.png -->
-                    <!-- Jika gambar tidak ditemukan (belum diupload), script onerror akan memunculkan teks ikon pengganti -->
                     <img src="sjplaytasion-logo.png" alt="SJPLAYTASION Logo" class="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
                          onerror="this.style.display='none'; document.getElementById('sponsor-fallback').style.display='flex'">
-                    
-                    <!-- Fallback jika sjplaytasion-logo.png belum tersedia di folder -->
                     <div id="sponsor-fallback" class="items-center gap-3 hidden">
                         <i class="fab fa-playstation text-5xl text-[#003791]"></i>
                         <span class="font-display font-bold text-4xl tracking-[0.2em] text-gray-800">SJPLAYTASION</span>
@@ -279,12 +298,10 @@
                 </div>
             </div>
 
-            <!-- Credits Request User -->
             <div class="border-t border-gray-200 pt-8 flex flex-col lg:flex-row justify-between items-center gap-6">
                 <p class="text-gray-500 text-xs text-center lg:text-left font-medium">
                     &copy; <span id="current-year"></span> LINI ESPORTS OFFICIAL. Hak Cipta Dilindungi Undang-Undang.
                 </p>
-                <!-- Modifikasi Bagian Penemu/Pendiri -->
                 <div class="flex items-center gap-4 bg-white px-5 py-3 rounded-xl border border-gray-100 shadow-sm">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-lini-blue to-lini-light-blue flex items-center justify-center text-white text-lg shadow-inner">
                         <i class="fas fa-user-tie"></i>
@@ -319,10 +336,10 @@
                         <div class="w-16 h-1 bg-lini-light-blue mb-6"></div>
                         
                         <p class="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed text-justify">
-                            Berawal dari semangat kompetitif dan jiwa petarung di <strong>Bandung</strong>, LINI ESPORTS resmi menggebrak panggung pada <strong>22 Juni 2026</strong> di bawah komando sang pendiri, <strong>Kenan Rahes Purnomo</strong>. Kami bukan sekadar tim biasa, melainkan sekumpulan talenta beringas yang disatukan oleh satu ambisi mematikan: Menjadi raja sejati di <i>Land of Dawn</i>.
+                            Diinisiasi dan didirikan pada <strong>22 Juni 2026</strong> oleh <strong>Kenan Rahes Purnomo</strong>, LINI ESPORTS lahir dari visi besar untuk mengangkat derajat talenta esports Indonesia di mata dunia. Kami membangun kultur juara yang berlandaskan disiplin, analisis mendalam, dan kerja sama tim.
                         </p>
                         <p class="text-gray-600 mb-8 text-sm sm:text-base leading-relaxed text-justify">
-                            Identitas macan biru dan kilatan petir kami bukanlah tanpa makna. Ini adalah wujud dari insting predator yang tajam, rotasi pergerakan secepat kilat, dan mentalitas pantang mundur meski terpojok. Setiap darah yang mengalir di balik jersey LINI membawa sumpah untuk bertarung dengan kehormatan dan meninggalkan warisan legendaris di skena esports Indonesia!
+                            Filosofi identitas biru dan petir kami melambangkan kekuatan mental yang kokoh serta kecepatan bertindak dalam mengambil keputusan krusial. Setiap anggota yang memakai jersey LINI membawa tanggung jawab untuk bermain dengan kehormatan.
                         </p>
                         
                         <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 flex flex-col sm:flex-row items-center sm:items-start gap-4">
@@ -338,7 +355,6 @@
                     <div class="md:col-span-5 order-1 md:order-2 relative">
                         <div class="aspect-[4/5] bg-gradient-to-b from-gray-50 to-gray-200 rounded-3xl shadow-inner overflow-hidden relative flex items-center justify-center p-8 border border-gray-100">
                            <div class="absolute inset-0 bg-lini-blue opacity-5 blur-xl"></div>
-                           <!-- Menggunakan logo.png -->
                            <img src="logo.png" alt="LINI ESPORTS Logo" class="relative z-10 w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/0b328a/ffffff?text=LINI+ESPORTS'">
                         </div>
                     </div>
@@ -346,12 +362,11 @@
             </div>
         </div>
 
-        <!-- Modal: Roster MLBB -->
-        <div id="roster-mlbb-modal" class="modal-content bg-lini-dark rounded-3xl shadow-2xl w-full max-w-6xl max-h-[95vh] overflow-y-auto hidden transform scale-95 transition-all duration-300 relative border border-gray-800">
-            <!-- Modal Background Decoration -->
+        <!-- Modal: Roster TIM RAKA -->
+        <div id="roster-raka-modal" class="modal-content bg-lini-dark rounded-3xl shadow-2xl w-full max-w-6xl max-h-[95vh] overflow-y-auto hidden transform scale-95 transition-all duration-300 relative border border-gray-800">
             <div class="absolute top-0 right-0 w-full h-64 bg-gradient-to-b from-lini-blue/20 to-transparent pointer-events-none"></div>
 
-            <button onclick="closeModal('roster-mlbb-modal')" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-20 focus:outline-none backdrop-blur-md">
+            <button onclick="closeModal('roster-raka-modal')" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-20 focus:outline-none backdrop-blur-md">
                 <i class="fas fa-times"></i>
             </button>
             
@@ -361,23 +376,20 @@
                         <span class="fi fi-id rounded-[2px] text-lg shadow-sm"></span>
                         <span class="text-lini-light-blue font-bold tracking-widest text-[10px] uppercase">Talenta Indonesia</span>
                     </div>
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white uppercase mb-4 tracking-wide drop-shadow-lg">Roster <span class="text-transparent bg-clip-text bg-gradient-to-r from-lini-light-blue to-blue-500">Utama</span></h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Susunan 6 pasukan elit Divisi Mobile Legends: Bang Bang. Petarung terbaik yang siap mengeksekusi lawan tanpa ampun.</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white uppercase mb-4 tracking-wide drop-shadow-lg">Roster Tim <span class="text-transparent bg-clip-text bg-gradient-to-r from-lini-light-blue to-blue-500">RAKA</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Susunan 6 pasukan elit Divisi Mobile Legends: Bang Bang (Tim RAKA). Petarung handal yang dominan di arena pertempuran.</p>
                 </div>
 
-                <!-- Grid Roster 6 Orang -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-                    
-                    <!-- Player 1 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 justify-center">
+                    <!-- Raka Player 1 -->
                     <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
                         <div class="aspect-[3/4] relative bg-gray-900">
-                            <!-- File gambar pemainml1.png -->
                             <img src="pemainml1.png" alt="Ronaldo junior" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
                             <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
                                 <span class="fi fi-id block rounded-[1px] text-base"></span>
                             </div>
                             <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
-                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Ronaldo junior">LNI. Ronaldo junior</h3>
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. Ronaldo junior</h3>
                                 <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
                                 <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
                                     <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend</span></span>
@@ -387,16 +399,15 @@
                         </div>
                     </div>
 
-                    <!-- Player 2 -->
+                    <!-- Raka Player 2 -->
                     <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
                         <div class="aspect-[3/4] relative bg-gray-900">
-                            <!-- File gambar pemainml2.png -->
                             <img src="pemainml1.png" alt="kfxa" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
                             <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
                                 <span class="fi fi-id block rounded-[1px] text-base"></span>
                             </div>
                             <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
-                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. kfxa">LNI. kfxa</h3>
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. kfxa</h3>
                                 <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
                                 <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
                                     <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Epic</span></span>
@@ -406,16 +417,15 @@
                         </div>
                     </div>
 
-                    <!-- Player 3 -->
+                    <!-- Raka Player 3 -->
                     <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
                         <div class="aspect-[3/4] relative bg-gray-900">
-                            <!-- File gambar pemainml3.png -->
                             <img src="pemainml1.png" alt="Nizthdar" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
                             <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
                                 <span class="fi fi-id block rounded-[1px] text-base"></span>
                             </div>
                             <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
-                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Nizthdar">LNI. Nizthdar</h3>
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. Nizthdar</h3>
                                 <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
                                 <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
                                     <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend</span></span>
@@ -425,16 +435,15 @@
                         </div>
                     </div>
 
-                    <!-- Player 4 -->
+                    <!-- Raka Player 4 -->
                     <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
                         <div class="aspect-[3/4] relative bg-gray-900">
-                            <!-- File gambar pemainml4.png -->
                             <img src="pemainml1.png" alt="Jack o' Why" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
                             <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
                                 <span class="fi fi-id block rounded-[1px] text-base"></span>
                             </div>
                             <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
-                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Jack o' Why">LNI. Jack o' Why</h3>
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. Jack o' Why</h3>
                                 <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bandung</p>
                                 <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
                                     <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Epic</span></span>
@@ -444,17 +453,16 @@
                         </div>
                     </div>
 
-                    <!-- Player 5 -->
+                    <!-- Raka Player 5 -->
                     <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
                         <div class="aspect-[3/4] relative bg-gray-900">
-                            <!-- File gambar pemainml5.png -->
                             <img src="pemainml1.png" alt="Fnnnxy" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
                             <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
                                 <span class="fi fi-id block rounded-[1px] text-base"></span>
                             </div>
                             <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
-                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. Fnnnxy">LNI. Fnnnxy</h3>
-                                <p class="text-xs text-gray-400 mb-3 truncate" title="Perumahan Green city Blok C No.22"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Green City Blok C No.22</p>
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. Fnnnxy</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Green City</p>
                                 <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
                                     <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend 5</span></span>
                                     <span class="bg-yellow-900/40 text-yellow-200 px-2.5 py-1.5 rounded border border-yellow-700/50 flex justify-between"><span>Max Rank:</span> <span>Legend 2</span></span>
@@ -463,16 +471,15 @@
                         </div>
                     </div>
 
-                    <!-- Player 6 -->
+                    <!-- Raka Player 6 -->
                     <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
                         <div class="aspect-[3/4] relative bg-gray-900">
-                            <!-- File gambar pemainml6.png -->
                             <img src="pemainml1.png" alt="kariri ikut icm" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
                             <div class="absolute top-3 left-3 bg-black/50 p-1.5 rounded backdrop-blur-md border border-white/10">
                                 <span class="fi fi-id block rounded-[1px] text-base"></span>
                             </div>
                             <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
-                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. kariri ikut icm">LNI. kariri ikut icm</h3>
+                                <h3 class="text-xl sm:text-2xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. kariri ikut icm</h3>
                                 <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Cimahi</p>
                                 <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
                                     <span class="bg-blue-900/40 text-blue-200 px-2.5 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Rank Now:</span> <span>Legend 2</span></span>
@@ -481,17 +488,160 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </div>
+        </div>
+
+        <!-- Modal: Roster TIM SIKA -->
+        <div id="roster-sika-modal" class="modal-content bg-lini-dark rounded-3xl shadow-2xl w-full max-w-6xl max-h-[95vh] overflow-y-auto hidden transform scale-95 transition-all duration-300 relative border border-gray-800">
+            <div class="absolute top-0 right-0 w-full h-64 bg-gradient-to-b from-lini-blue/20 to-transparent pointer-events-none"></div>
+
+            <button onclick="closeModal('roster-sika-modal')" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-20 focus:outline-none backdrop-blur-md">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="p-6 sm:p-10 lg:p-12 relative z-10">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center gap-3 mb-4 px-4 py-1.5 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm">
+                        <span class="fi fi-id rounded-[2px] text-lg shadow-sm"></span>
+                        <span class="text-lini-light-blue font-bold tracking-widest text-[10px] uppercase">Talenta Indonesia</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white uppercase mb-4 tracking-wide drop-shadow-lg">Roster Tim <span class="text-transparent bg-clip-text bg-gradient-to-r from-lini-light-blue to-blue-500">SIKA</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Susunan 5 pasukan elit Divisi Mobile Legends: Bang Bang (Tim SIKA). Skuad dengan sinergi tingkat tinggi yang telah menorehkan ragam prestasi.</p>
+                </div>
+
+                <!-- Perubahan: Dihapus lg:grid-cols-5 agar ukurannya sama dengan RAKA (md:grid-cols-3) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 justify-center">
+                    
+                    <!-- Sika Player 1 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <img src="pemainml1.png" alt="Kenn x Geqi" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute top-3 left-3 bg-yellow-500/80 text-black px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm shadow-lg">
+                                Kapten
+                            </div>
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-lg sm:text-xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. Kenn x Geqi</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bogor</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Role:</span> <span>Gold</span></span>
+                                    <span class="bg-gray-800/80 text-gray-300 px-2 py-1.5 rounded border border-gray-700/50 flex justify-between"><span>Lahir:</span> <span>01-02-2008</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sika Player 2 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <img src="pemainml1.png" alt="L4ufendyer's Shine." class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-lg sm:text-xl font-display font-bold uppercase text-white tracking-wide truncate mb-1" title="LNI. L4ufendyer's Shine.">LNI. L4ufendyer's...</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bogor</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Role:</span> <span>Jungler</span></span>
+                                    <span class="bg-gray-800/80 text-gray-300 px-2 py-1.5 rounded border border-gray-700/50 flex justify-between"><span>Lahir:</span> <span>16 Mei 2009</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sika Player 3 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <img src="pemainml1.png" alt="Ryuuu" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-lg sm:text-xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. Ryuuu</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bogor</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Role:</span> <span>Roamer</span></span>
+                                    <span class="bg-gray-800/80 text-gray-300 px-2 py-1.5 rounded border border-gray-700/50 flex justify-between"><span>Lahir:</span> <span>17 Nov 2007</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sika Player 4 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <img src="pemainml1.png" alt="Kyy Over Hit" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-lg sm:text-xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. Kyy Over Hit</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bogor</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Role:</span> <span>Mid</span></span>
+                                    <span class="bg-gray-800/80 text-gray-300 px-2 py-1.5 rounded border border-gray-700/50 flex justify-between"><span>Lahir:</span> <span>11 Desember</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sika Player 5 -->
+                    <div class="bg-[#151f32] rounded-2xl overflow-hidden border border-gray-800 hover:border-lini-blue transition-all duration-300 group">
+                        <div class="aspect-[3/4] relative bg-gray-900">
+                            <img src="pemainml1.png" alt="1818562093" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/400x500/0f172a/ffffff?text=FOTO+PEMAIN'">
+                            <div class="absolute bottom-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/95 to-transparent">
+                                <h3 class="text-lg sm:text-xl font-display font-bold uppercase text-white tracking-wide truncate mb-1">LNI. 1818562093</h3>
+                                <p class="text-xs text-gray-400 mb-3 truncate"><i class="fas fa-map-marker-alt text-lini-light-blue mr-1.5"></i>Bogor</p>
+                                <div class="flex flex-col gap-1 text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="bg-blue-900/40 text-blue-200 px-2 py-1.5 rounded border border-blue-700/50 flex justify-between"><span>Role:</span> <span>Mid</span></span>
+                                    <span class="bg-gray-800/80 text-gray-300 px-2 py-1.5 rounded border border-gray-700/50 flex justify-between"><span>Lahir:</span> <span>04 Juli 2007</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Pencapaian (Achievements) Tim SIKA -->
+                <div class="mt-16 pt-10 border-t border-gray-800/80 relative">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-lini-dark px-4">
+                        <i class="fas fa-trophy text-yellow-500 text-2xl"></i>
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wider">Pencapaian <span class="text-lini-light-blue">Tim SIKA</span></h3>
+                        <p class="text-gray-400 text-sm mt-2">Koleksi kebanggaan hasil dedikasi keras di medan pertempuran.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group relative rounded-xl overflow-hidden border border-gray-700 hover:border-lini-light-blue transition-all duration-300 shadow-lg">
+                            <img src="Juara1.jpeg" alt="Pencapaian 1" class="w-full h-40 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/600x400/151f32/ffffff?text=Juara+1'">
+                        </div>
+                        <div class="group relative rounded-xl overflow-hidden border border-gray-700 hover:border-lini-light-blue transition-all duration-300 shadow-lg">
+                            <img src="juara2.jpeg" alt="Pencapaian 2" class="w-full h-40 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/600x400/151f32/ffffff?text=Juara+2'">
+                        </div>
+                        <div class="group relative rounded-xl overflow-hidden border border-gray-700 hover:border-lini-light-blue transition-all duration-300 shadow-lg">
+                            <img src="juara3.jpeg" alt="Pencapaian 3" class="w-full h-40 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/600x400/151f32/ffffff?text=Juara+3'">
+                        </div>
+                        <div class="group relative rounded-xl overflow-hidden border border-gray-700 hover:border-lini-light-blue transition-all duration-300 shadow-lg">
+                            <img src="juara4.jpeg" alt="Pencapaian 4" class="w-full h-40 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.src='https://placehold.co/600x400/151f32/ffffff?text=Juara+4'">
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
 
     <script>
-        // Set tahun otomatis untuk copyright
+        // Script untuk Loading Screen
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                // Memberikan jeda waktu 4 detik (4000ms) agar loading tampil lebih lama
+                setTimeout(() => {
+                    // Menambahkan kelas transisi agar hilang perlahan
+                    loader.classList.add('opacity-0');
+                    
+                    // Menghapus elemen dari tampilan setelah transisi selesai
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 700); 
+                }, 4000); // Diubah dari 2500 menjadi 4000 (4 detik)
+            }
+        });
+
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Mobile Menu Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
@@ -499,14 +649,12 @@
             menu.classList.toggle('hidden');
         });
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
             });
         });
 
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
@@ -519,34 +667,26 @@
             }
         });
 
-        // --- Logika Modal / Pop-up ---
         const modalOverlay = document.getElementById('modal-overlay');
         
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (!modal) return;
 
-            // Tampilkan overlay
             modalOverlay.classList.remove('hidden');
-            // Sedikit delay agar transisi display block berfungsi untuk opacity
             setTimeout(() => {
                 modalOverlay.classList.remove('opacity-0');
                 modalOverlay.classList.add('opacity-100');
             }, 10);
 
-            // Sembunyikan semua modal content dulu
             document.querySelectorAll('.modal-content').forEach(m => m.classList.add('hidden'));
-            
-            // Tampilkan modal yang dituju
             modal.classList.remove('hidden');
             
-            // Animasi masuk
             setTimeout(() => {
                 modal.classList.remove('scale-95');
                 modal.classList.add('scale-100');
             }, 10);
 
-            // Kunci scroll pada body untuk menghindari double scrollbar
             document.body.style.overflow = 'hidden';
         }
 
@@ -554,24 +694,19 @@
             const modal = document.getElementById(modalId);
             if (!modal) return;
 
-            // Animasi keluar modal content
             modal.classList.remove('scale-100');
             modal.classList.add('scale-95');
 
-            // Animasi keluar overlay
             modalOverlay.classList.remove('opacity-100');
             modalOverlay.classList.add('opacity-0');
 
-            // Tunggu animasi selesai baru di-hidden
             setTimeout(() => {
                 modal.classList.add('hidden');
                 modalOverlay.classList.add('hidden');
-                // Kembalikan scroll pada body
                 document.body.style.overflow = 'auto';
             }, 300);
         }
 
-        // Tutup modal jika klik di luar kotak modal (pada area overlay gelap)
         function closeAllModals(event) {
             if (event.target === modalOverlay) {
                 const activeModal = document.querySelector('.modal-content:not(.hidden)');
